@@ -1,6 +1,6 @@
 export const requestLogin = () => {
-    const userName = prompt('Уточните, пожалуйста, Ваше имя:');
-    localStorage.setItem('userName', userName);
+    const username = prompt('Уточните, пожалуйста, Ваше имя:');
+    localStorage.setItem('userName', username);
 
-    return userName;
+    return username;
 };

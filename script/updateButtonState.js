@@ -1,5 +1,7 @@
-export const updateButtonState = () => {
-    const input = document.querySelector('input[type="text"]');
-    const button = document.querySelector('button[type="submit"]');
-    button.disabled = !input.value.trim();
+export const updateButtonState = (inputElement, buttonElement) => {
+    if (!inputElement.validity.valid) {
+        buttonElement.disabled = true; 
+    } else {
+        buttonElement.disabled = false; 
+    }
 };
