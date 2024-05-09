@@ -1,7 +1,9 @@
-import { requestLogin } from './requestLogin.js';
-import { renderStorage } from './renderStorage.js';
+import { requestLogin } from './localStorage/requestLogin.js';
+import { renderStorage } from './localStorage/renderStorage.js';
 import { updateButtonState } from './updateButtonState.js';
 import { addTask } from './addTask.js';
+import { deleteControl } from './deleteControl.js';
+import { addCompleteTaskHandlers } from './addCompleteTaskHandlers.js';
 
 const init = () => {
     const buttonSubmitForm = document.querySelector('.btn-primary');
@@ -12,6 +14,8 @@ const init = () => {
 
     renderStorage(username, list);
     updateButtonState(inputForm, buttonSubmitForm);
+    deleteControl(list);
+    addCompleteTaskHandlers();
 
     inputForm.addEventListener('input', () => {
         updateButtonState(inputForm, buttonSubmitForm);
@@ -23,6 +27,7 @@ const init = () => {
         addTask(taskText, list, username);
         form.reset();
         updateButtonState(inputForm, buttonSubmitForm);
+        addCompleteTaskHandlers();
     });
 };
 init();

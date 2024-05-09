@@ -5,8 +5,3 @@ export const setStorage = (key, obj) => {
     newData.push(obj);
     localStorage.setItem(key, JSON.stringify(newData));
 };
-
-export const saveTasksToStorage = (username, tasks) => {
-    const tasksJson = JSON.stringify(tasks);
-    localStorage.setItem(username, tasksJson);
-};

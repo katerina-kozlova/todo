@@ -1,5 +1,3 @@
-import { completeTask } from './completeTask.js';
-
 export const createRow = (task) => {
     const row = document.createElement('tr');
     const cellNumber = document.createElement('td');
