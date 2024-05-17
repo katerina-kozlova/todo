@@ -6,6 +6,7 @@ import { addCompleteTaskHandlers } from './addCompleteTaskHandlers.js';
 
 const init = () => {
     const buttonSubmitForm = document.querySelector('.btn-primary');
+    const buttonResetForm = document.querySelector('.btn-warning');
     const form = document.querySelector('form');
     const inputForm = form.querySelector('.form-control');
     const list = document.querySelector('tbody');
@@ -21,10 +22,19 @@ const init = () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const taskText = inputForm.value;
-        addTask(taskText, list, username);
+        // предотвратить добавление пустой задачи
+        if (taskText.trim() !== '') {
+            addTask(taskText, list, username);
+            form.reset();
+            updateButtonState(inputForm, buttonSubmitForm);
+        }
+    });
+
+    buttonResetForm.addEventListener('click', () => {
         form.reset();
         updateButtonState(inputForm, buttonSubmitForm);
     });
+
     addCompleteTaskHandlers(list);
 };
 init();
